@@ -35,7 +35,8 @@ ui <- fluidPage(
                      h5("Time Series Prediction using the ARIMA Model"),
                      checkboxInput("ShowTest1","Show/Hide Ljung-Box Test, Lag=5", value = TRUE),
                      checkboxInput("ShowTest2","Show/Hide Ljung-Box Test, Lag=10", value = TRUE),
-                     checkboxInput("ShowTest3","Show/Hide Ljung-Box Test, Lag=15", value = TRUE)
+                     checkboxInput("ShowTest3","Show/Hide Ljung-Box Test, Lag=15", value = FALSE),
+                     submitButton("Submit")
                   ),
                  # Main panel for displaying outputs ----
                   mainPanel(
@@ -55,7 +56,8 @@ ui <- fluidPage(
                 sidebarPanel(
                   h4("Exploratory Analysis"),
                   h5("Time Series Analysis"),
-                  checkboxInput("ShowTrendline","Show/Hide Trend line", value = TRUE)
+                  checkboxInput("ShowTrendline","Show/Hide Trend line", value = TRUE),
+                  submitButton("Submit")
                  
                  ),
                 # Main panel for displaying outputs ----

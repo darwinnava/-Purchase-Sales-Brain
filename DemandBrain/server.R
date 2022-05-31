@@ -1,22 +1,16 @@
-#
-# This is the server logic of a Shiny web application. You can run the 
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
-
-
-# Define server logic required to draw a histogram
 shinyServer(function(input, output) {
+
+  ablinez <- reactive({
+    # Display the dataset
+    a <- input$ShowTrendline
+    if(a){abline(reg = lm(AirPassengers ~ time(AirPassengers)))
+    }
+  })
   output$Plot1 <- renderPlot({
     # Display the dataset
     plot(AirPassengers)
-    if(input$ShowTrendline){abline(reg = lm(AirPassengers ~ time(AirPassengers)))
-    }
-
+    ablinez()
+    
   })
   output$Plot11 <- renderPrint({
     # Display the dataset
@@ -57,9 +51,15 @@ shinyServer(function(input, output) {
   output$Plot6 <- renderPlot({
     #plot forecast for the nest N years
     n <- input$Years - 1960
-    myforecast = forecast(mymodel, level = c(95), h=n*12)
-    plot(myforecast)
-    
+    myforecast1 <- forecast(mymodel, level = c(95), h=n*12)
+    plot(myforecast1)
+  }) 
+
+  output$Print5 <- renderPrint({
+    # Table summary of my forecasting
+    n <- input$Years - 1960
+    myforecast1 <- forecast(mymodel, level = c(95), h=n*12)
+    summary(myforecast1)
   }) 
   
   output$Print2 <- renderPrint({
@@ -76,8 +76,6 @@ shinyServer(function(input, output) {
     ifelse(input$ShowTest3, Box.test(mymodel$residuals, lag = 15, type = "Ljung-Box"),"")
   }) 
   
-  output$Print5 <- renderPrint({
-    # Table summary of my forecasting
-    summary(myforecast)
-  }) 
+
+  
 }) 
