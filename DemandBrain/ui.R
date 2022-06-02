@@ -4,9 +4,10 @@ library(forecast)
 ui <- fluidPage(
   tabsetPanel(
     tabPanel("Forecast", fluid = TRUE,  
-      titlePanel("To predict the Airline tickets' sales from 1961 to 1970"),
+      titlePanel("The classic Box & Jenkins airline data: To predict the Airline tickets' sales from 1961 to 1970"),
         sidebarLayout(
            sidebarPanel(
+              h4("Darwin Reynell Nava, Updated: June 1st 2022"),
               h4("Forecast"),
               h5("Time Series Prediction using the ARIMA Model"),
               sliderInput(inputId = "Years",
