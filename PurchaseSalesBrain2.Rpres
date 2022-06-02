@@ -1,42 +1,39 @@
-The Purchase Sales Brain Shiny App: To predict the Airline tickets' sales from 1961 to 1970
+The Purchase Sales Brain Shiny App: To predict the Airline tickets' sales from 1961 to 1970  
 ========================================================
-author: Darwin Reynell Nava
-date: June, 1st 2022
-autosize: true
+Author: Darwin Reynell Nava
+Date: June, 1st 2022
 
-Introduction
 ========================================================
 
-The Purchase & Sales Brain is a Shiny App designed to predict the Airline tickets' sales from 1961 to 1970 using an ARIMA model with the time series available in R datasets called AirPassengers. The classic Box & Jenkins airline data. Its format is a  monthly time series, in thousands. It records Monthly Airline Passenger Numbers from 1949 to 1960. 
+Introduction  
+The Purchase & Sales Brain is a Shiny App designed to predict the Airline tickets' sales from 1961 to 1970 using an ARIMA model with the time series available in R datasets called AirPassengers. The classic Box & Jenkins airline data. Its format is a  monthly time series, in thousands. It records Monthly Airline Passenger Numbers from 1949 to 1960. The app is made up of three sections. the first section carries out a forecast for the range of years that the user provides through a slider, the second one presents the ARIMA model validation and the respective pvalues. Finally, the third presents an exploratory analysis of the Airpassangers time series. Graphics are presented in each section, the user can choose specific customizations.The Shiny application and a presentation were hosted on:  
+- [Shiny App:Purchase & Sales Brain   ](“https://darwinnava.shinyapps.io/PurchaseSalesBrain/”)
+- [Shiny App Presentation](https://rpubs.com/darwinnava/PurchaseSalesBrain)  
 
-The app is made up of three sections. the first section carries out a forecast for the range of years that the user provides through a slider, the second one presents the ARIMA model validation and the respective pvalues. Finally, the third presents an exploratory analysis of the Airpassangers time series. Graphics are presented in each section, the user can choose specific customizations.
-
-The Shiny application and a presentation were hosted on: 
-- [Shiny App:Purchase & Sales Brain ](“https://darwinnava.shinyapps.io/PurchaseSalesBrain/”)
-- [Shiny App Presentation](https://github.com/darwinnava/-Purchase-Sales-Brain/tree/main/PurchaseSalesBrain2.Rpres)
-
-Dataset
 ========================================================
-The classic Box & Jenkins airline data.
+Dataset  
+The classic Box & Jenkins airline data.  
 ```{r}
-AirPassengers
+start(AirPassengers)
+end(AirPassengers)
+frequency(AirPassengers)
 ```
 
-ARIMA Model and Validation
 ========================================================
+ARIMA Model and Validation 
 ```{r, echo=FALSE}
 library(forecast)
 mymodel = auto.arima(AirPassengers)
-mymodel
-Box.test(mymodel$residuals, lag = 5, type = "Ljung-Box")
-Box.test(mymodel$residuals, lag = 10, type = "Ljung-Box")
+summary(mymodel)
 ```
 
-Forecast
 ========================================================
-The right graph shows the predicted values in blue for each of the months from 1961 to 1970. On the left, the diagram of the ARIMA model. Finally, a table is presented with the 95 confidence intervals for the year 2021.
+```{r, echo=FALSE}
+Box.test(mymodel$residuals, lag = 5, type = "Ljung-Box")[3]
+```
+Forecast  
+Predicted values  from 1961 to 1970.  
 ```{r, echo=FALSE}
 myforecast1 <- forecast(mymodel, level = c(95), h=10*12)
-plot(myforecast1, )
-plot(mymodel)
-myforecast1
+plot(myforecast1 )
+```
