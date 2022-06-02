@@ -12,7 +12,7 @@ The Purchase & Sales Brain is a Shiny App designed to predict the Airline ticket
 The app is made up of three sections. the first section carries out a forecast for the range of years that the user provides through a slider, the second one presents the ARIMA model validation and the respective pvalues. Finally, the third presents an exploratory analysis of the Airpassangers time series. Graphics are presented in each section, the user can choose specific customizations.
 
 The Shiny application and a presentation were hosted on: 
-- [Shiny App:Purchase & Sales Brain ](“https://gabrielacantos.shinyapps.io/PurchaseSalesBrain/”)
+- [Shiny App:Purchase & Sales Brain ](“https://darwinnava.shinyapps.io/PurchaseSalesBrain/”)
 - [Shiny App Presentation](https://github.com/darwinnava/-Purchase-Sales-Brain/tree/main/PurchaseSalesBrain2.Rpres)
 
 Dataset
