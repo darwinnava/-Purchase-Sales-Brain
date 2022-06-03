@@ -1,0 +1,13 @@
+name: PurchaseSalesBrain
+title: PurchaseSalesBrain
+username:
+account: darwinnava
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6416827
+bundleId: 5973859
+url: https://darwinnava.shinyapps.io/PurchaseSalesBrain/
+when: 1654232568.19017
+lastSyncTime: 1654232568.19017
+asMultiple: FALSE
+asStatic: FALSE

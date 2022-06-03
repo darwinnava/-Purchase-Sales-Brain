@@ -1,13 +1,29 @@
 library(shiny)
 library(forecast)
+library(datasets)
+library(colorspace)
+library(fracdiff)
+library(ggplot2)
+library(graphics)
+library(lmtest)
+library(magrittr)
+library(nnet)
+library(parallel)
+library(Rcpp)
+library(stats)
+library(timeDate)
+library(tseries)
+library(urca)
+library(zoo)
+data("AirPassengers", package = "datasets")
 
 ui <- fluidPage(
   tabsetPanel(
-    tabPanel("Forecast", fluid = TRUE,  
+    tabPanel("Forecast", fluid = FALSE,  
       titlePanel("The classic Box & Jenkins airline data: To predict the Airline tickets' sales from 1961 to 1970"),
         sidebarLayout(
            sidebarPanel(
-              h4("Darwin Reynell Nava, Updated: June 1st 2022"),
+              h4("Darwin Reynell Nava, Updated: June 3rd 2022"),
               h4("Forecast"),
               h5("Time Series Prediction using the ARIMA Model"),
               sliderInput(inputId = "Years",
